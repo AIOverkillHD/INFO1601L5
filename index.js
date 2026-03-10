@@ -1,3 +1,109 @@
+//object literal
+let bob = {
+  fname: "bob",
+  lname: "smith",
+  age: 18,
+  height: 6,
+  transcript:[
+    {
+      course: 'INFO 1603',
+      grades: [ 89, 34, 67 ]
+    },
+    {
+      course: 'INFO 1601',
+      grades: [ 89, 34, 67 ]
+    }
+  ]
+};
+
+let sally = {
+  fname: "sally",
+  lname: "smith",
+  age: 18,
+  height: 6,
+  transcript:[
+    {
+      course: 'INFO 1601',
+      grades: [ 100, 89, 79 ]
+    }
+  ]
+};
+
+let paul = {
+  fname: "paul",
+  lname: "smith",
+  age: 18,
+  height: 6,
+  transcript:[
+    {
+      course: 'INFO 1600',
+      grades: [ 89, 34, 67 ]
+    }
+  ]
+};
+
+
+const students = [bob, sally, paul];
+
+function getAverageGrade(student, course){
+  for(let i = 0; i<student.transcript.length; i++) {
+    if(student.transcript[i].course === course){
+      let sum = 0;
+      for(let j = 0; j<student.transcript[i].grades.length; j++){
+        sum += student.transcript[i].grades.length;
+  }
+  return -1;
+}
+
+function getAssignmentMark (student, course, num){
+  for(let i = 0; i<student.transcript.length; i++) {
+    if(student.transcript[i].course === course){
+      if(num < student.transcript[i].grades.length && num >= 0){
+        return student.transcript[i].grades[num];
+      }
+    }
+  }
+  return -1;
+}
+
+function averageAssessment(student, courseName, assignmentNum){
+  let sum = 0;
+  let count = 0;
+
+  for(let s of students){
+    let mark = getAssignmentMark(s, courseName, assignmentNum);
+    if (mark !== -1){
+      sum += mark;
+      count++;
+    }
+  }
+  if(count > 0){
+    return sum / count;
+  }
+  return -1;
+}
+
+console.log( "=======================================");
+console.log("Average grade for " + bob.lname + " in INFO 1603: " + getAverageGrade(bob, 'INFO 1603'));
+console.log("Average grade for " + sally.lname + " in INFO 1601: " + getAverageGrade(sally, 'INFO 1601'));
+console.log("Average grade for " + paul.lname + " in INFO 1600: " + getAverageGrade(paul, 'INFO 1600'));
+console.log("=======================================");
+
+console.log("========================================");
+console.log("Assignment grade for" + bob.lname + " in INFO 1603: " + getAssignmentMark(bob, 'INFO 1603', 1));
+console.log("Assignment grade for" + sally.lname + " in INFO 1601: " + getAssignmentMark(sally, 'INFO 1601', 2));
+console.log("Assignment grade for" + paul.lname + " in INFO 1600: " + getAssignmentMark(paul, 'INFO 1600', 0));
+console.log("=======================================");
+
+console.log("========================================");
+console.log("Average grade for assignment 0 in INFO 1600: " + averageAssessment(students, 'INFO 1600', 0));
+console.log("Average grade for assignment 1 in INFO 1603: " + averageAssessment(students, 'INFO 1603', 1));
+console.log("Average grade for assignment 2 in INFO 1601: " + averageAssessment(students, 'INFO 1601', 2));
+console.log("=======================================");
+
+
+
+
 /* //task 5.2
 let arr = [12, 33, 4, 5, -4, 8, 19, 25];
                 
